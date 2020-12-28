@@ -56,3 +56,22 @@ class ITSLangevinIntegrator(CustomIntegrator):
         self.addComputePerDof("x1", "x")
         self.addConstrainPositions()
         self.addComputePerDof("v", "v + (x-x1)/dt")
+
+
+def generateITSParameters(t, Tlist, Elist, Tlow=298.15, Tup=373.15):
+    """Generate n and T for ITS simulation.
+
+    Parameters
+    ----------
+    t
+        Exchange prob
+    Tlist
+        List of temperature for fitting
+    Elist
+        List of average potential energy for fitting
+    Tlow
+        The lower limit temperature in ITS temperature integration
+    Tup
+        The upper limit temperature in ITS temperature integration
+    """
+    pass
