@@ -117,12 +117,15 @@ class GaMDLangevinIntegrator(mm.CustomIntegrator):
         """
         return energy + 0.5 * self.K * (self.E - energy) ** 2 if energy < self.E else energy
 
-    def updateParametersBySample(self, energy_list):
+    def updateParametersBySample(self, energy_list, Emax=None):
         """Update constant K and E based on sampled energy distribution.
         """
         # get statistics
         arr = np.array(energy_list)
-        Vmax = arr.max()
+        if Emax is None:
+            Vmax = arr.max()
+        else:
+            Vmax = Emax
         Vmin = arr.min()
         Vavg = arr.mean()
         Vstd = np.std(arr)
